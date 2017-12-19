@@ -6,7 +6,7 @@
     <div class="col-md-8">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" href="/blog/create">Post Baru</a>
+          <a class="nav-link active" href="/blog/create">Edit Post</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/blog/saved">Tersimpan</a>
@@ -22,16 +22,16 @@
   </div>
 </div>
 
-<form method="POST" action="/blog">
+<form method="POST" action="/blog/{{$blog->id}}">
   {{ csrf_field() }}
   <div class="container">
     <div class="row justify-content-between">
       {{-- kolom post --}}
       <div class="col-md-8">
           <div class="form-group">
-            <textarea class="form-control" name="isi_blog" id="content_blog" rows="20">{{old('isi_blog')}}</textarea>
-            @if ($errors->has('isi_blog'))
-              <span style="color:red;">{{$errors->first('isi_blog')}}</span>
+            <textarea class="form-control" name="isi_blog" id="content_blog" rows="20">{{ $blog->content }}</textarea>
+            @if ($errors->has('content'))
+              <span>{{$errors->first('content')}}</span>
             @endif
           </div>
       </div>
@@ -42,9 +42,9 @@
         <div class="form-group">
           <label for="judul">Judul Post</label>
           @if ($errors->has('title'))
-            <span style="color:red;">{{$errors->first('title')}}</span>
+            <span>{{$errors->first('title')}}</span>
           @endif
-          <input type="text" name="title" class="form-control" id="judul" placeholder="Masukkan Link ..." value="{{old('title')}}">
+          <input type="text" name="title" class="form-control" id="judul" placeholder="Masukkan Link ..." value="{{(old('title')) ? old('title') : $blog->title}}">
         </div>
         <div class="form-group">
           <label for="thumbnail">Set Featured Image</label>
@@ -54,20 +54,21 @@
                 <i class="fa fa-picture-o"></i> Choose
               </a>
             </span>
-            <input id="thumbnail" class="form-control" type="text" name="featured_img" readonly>
+            <input id="thumbnail" class="form-control" type="text" name="featured_img" value="{{(old('featured_img')) ? old('featured_img') : $blog->featured_img}}" readonly>
           </div>
           @if ($errors->has('featured_img'))
-            <span style="color:red;">{{$errors->first('featured_img')}}</span>
+            <span>{{$errors->first('featured_img')}}</span>
           @endif
         </div>
         <div class="row justify-content-md-center">
           <div class="col-md-9">
             <div class="featured_img_holder">
-              <img id="holder" style="margin-top:15px;min-height:170px;max-height:170px; max-width:245px">
+              <img src="{{(old('featured_img')) ? old('featured_img') : $blog->featured_img}}" id="holder" style="margin-top:15px;min-height:170px;max-height:170px; max-width:245px">
             </div>
           </div>
         </div>
         <br>
+        <input type="hidden" name="_method" value="PUT">
         <button type="submit" name="submit" class="btn btn-outline-primary btn-block">Submit Post</button>
       </div>
       {{-- end kolom featured --}}

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!-- Scripts -->
-
+    <link rel="stylesheet" href="{{asset('css/marque.css')}}">
 
 </head>
 <body>
@@ -97,6 +97,16 @@
               <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
             </div>
 
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="example1">
+              <h3><i class="fa fa-bullhorn" aria-hidden="true"></i> Hallo ! Selamat Datang ... Terima Kasih Telah Berkunjung .... WEB Masih Dalam Pembuatan </h3>
+            </div>
           </div>
         </div>
       </div>

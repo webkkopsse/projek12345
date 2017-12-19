@@ -9,6 +9,13 @@
       vertical-align: middle;
   }
 }
+.marquee {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0px;
+}
 
 .hidden{
      opacity:0;
@@ -219,12 +226,15 @@ table.mceLayout, textarea.tinyMCE {
 .postnya {
   margin-bottom: 1em;
 }
-.card-img-top {
+.postnya .card-img-top {
   max-height: 15em;
   min-height: 15em;
 }
-.card-body{
+.postnya .card-body{
   color : white;
   background-color: #61420d;
   padding: 0.7em;
+}
+.post_tersimpan .btn-block{
+
 }

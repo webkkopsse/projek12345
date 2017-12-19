@@ -9,6 +9,6 @@ class adminController extends Controller
 {
   public function dashboard()
   {
-    die('ini halaman dasboard');
+    return view('blogs/create');
   }
 }

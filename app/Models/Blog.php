@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
@@ -12,5 +13,9 @@ class Blog extends Model
 
     public function user(){
       return $this->belongsTo('App\Models\User');
+    }
+
+    public function isOwner(){
+      return Auth::user()->id == $this->user_id;
     }
 }

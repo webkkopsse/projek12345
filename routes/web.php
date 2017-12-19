@@ -18,6 +18,7 @@ Route::group(['middleware'=> 'admin'], function(){
 
 Route::group(['middleware'=> 'auth'], function(){
     Route::resource('blog','BlogController', ['except'=>['index','show']]);
+    Route::get('/blog/saved', 'BlogController@saved');
 });
 
 Route::resource('blog','BlogController', ['only'=>['index','show']]);

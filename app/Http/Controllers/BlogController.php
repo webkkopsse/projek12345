@@ -19,6 +19,12 @@ class BlogController extends Controller
 
     }
 
+    public function saved(){
+      $blogs = Blog::where('user_id', Auth::user()->id)
+                    ->orderBy('created_at','desc')
+                    ->paginate(6);
+      return view('blogs.saved',['blogs'=>$blogs]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +32,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blogs/create');
+        return view('blogs.create');
     }
 
     /**
@@ -73,7 +79,10 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+      $blog = Blog::findOrFail($id);
+      if($blog->isOwner())
+        return view('blogs.edit',compact('blog'));
+      else abort(403);
     }
 
     /**
@@ -85,7 +94,22 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'title' => 'required|unique:blogs|min:5|max:100',
+        'isi_blog' => 'required|min:5',
+        'featured_img' => 'required|max:100',
+      ]);
+
+      $blog = Blog::findOrFail($id);
+      if($blog->isOwner())
+        $blog->update([
+          'title' => $request->title,
+          'content' => $request->isi_blog,
+          'featured_img' => $request->featured_img,
+        ]);
+      else abort(403);
+
+        return redirect('/blog/saved')->with('msg','Berhasil di Edit');
     }
 
     /**
@@ -96,6 +120,11 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $blog = Blog::findOrFail($id);
+      if($blog->isOwner())
+        $blog->delete();
+      else abort(403);
+
+      return redirect('/blog/saved')->with('msg','Berhasil di Hapus');
     }
 }
