@@ -30,7 +30,7 @@
               <a class="navbar-brand text-danger" href="{{ url('/') }}">
                   <strong>Home</strong>
               </a>
-              <a class="navbar-brand text-success" href="#">
+              <a class="navbar-brand text-success" href="/blog">
                 <strong>Blog</strong>
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -128,7 +128,7 @@
  <script src="{{asset('js/jquery.viewportchecker.js')}}" charset="utf-8"></script>
  <script>
  $(document).ready(function() {
-    $('.postnya').addClass("hidden").viewportChecker({
+    $('.ani_post').addClass("hidden").viewportChecker({
         classToAdd: 'visible animated fadeInUp',
         offset: 3
        });

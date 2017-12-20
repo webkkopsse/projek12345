@@ -16,7 +16,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-
+      $blogs = Blog::orderBy('updated_at','desc')->paginate(10);
+      return view('blogs.index',['blogs'=>$blogs]);
     }
 
     public function saved(){
@@ -95,7 +96,7 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-        'title' => 'required|unique:blogs|min:5|max:100',
+        'title' => 'required|min:5|max:100',
         'isi_blog' => 'required|min:5',
         'featured_img' => 'required|max:100',
       ]);

@@ -92,7 +92,7 @@
             <div class="warp_judul col-md-12">
               <div class="title_berita">
                 <h2 class="isi_title"><strong><i class="fa fa-newspaper-o" aria-hidden="true"></i> BERITA TERBARU</strong></h2>
-                <a class="tunjul_kanan" href="" role="button">lihat blog</a>
+                <a class="tunjul_kanan" href="/blog" role="button">lihat blog</a>
               </div>
             </div>
           </div>
@@ -101,9 +101,9 @@
             <div class="warp_berita col-md-12">
               <div class="row">
                 @foreach ($blogs as $blog)
-                  <div class="postnya col-sm-4">
+                  <div class="postnya ani_post col-sm-4">
                     <div class="card">
-                      <a href="/blog/{{$blog->slug}}"><img class="card-img-top" src="{{$blog->featured_img}}" alt="{{$blog->title}}"></a>
+                      <img class="card-img-top gambar_post" src="{{$blog->featured_img}}" alt="{{$blog->title}}">
                       <div class="card-body">
                         <h4 class="card-title">{{$blog->title}}</h4>
                         <ul class="list-inline">
@@ -114,7 +114,7 @@
                             <span><i class="fa fa-clock-o" aria-hidden="true"></i> {{$blog->created_at}}</span>
                           </li>
                         </ul>
-                        <span class="card-text">{!! strip_tags(str_limit($blog->content, 100)) !!} <a href="/blog/{{$blog->slug}}" class="pull-right btn btn-outline-warning">Baca Selengkapnya</a></span>
+                        <a href="/blog/{{$blog->slug}}" class="pull-right btn btn btn-warning">Baca Selengkapnya</a>
                       </div>
                     </div>
                   </div>
@@ -122,12 +122,12 @@
               </div>
             </div>
             <div class="col-md-12">
-              {{ $blogs->links() }}
+              <p class="text-center ani_post"><a class="btn tombol_blog btn-lg btn-block" href="/blog" role="button">lihat blog selengkapnya</a></p>
             </div>
           </div>
         </div>
         <div class="chat col-md-3">
-              <script id="cid0020000172889306508" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height: 100%;">{"handle":"opsse","arch":"js","styles":{"b":100,"c":"000000","d":"000000","l":"FFFFFF","m":"FFFFFF","p":"10","r":100,"usricon":1.08,"fwtickm":1}}</script>
+          <script id="cid0020000172889306508" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height: 100%;">{"handle":"opsse","arch":"js","styles":{"b":100,"c":"000000","d":"000000","l":"FFFFFF","m":"FFFFFF","p":"10","r":100,"usricon":1.08,"fwtickm":1}}</script>
         </div>
       </div>
     </div>

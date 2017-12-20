@@ -5,7 +5,7 @@
 }
 .example1 h3 {
  position: absolute;
- width: 100%;
+ width: auto;
  height: 100%;
  margin: 0;
  color : #885b0e;
@@ -54,4 +54,10 @@
  -webkit-transform: translateX(-100%); /* Firefox bug fix */
  transform: translateX(-100%);
  }
+}
+
+@media (max-width: 576px ){
+  .example1 h3 {
+      font-size: 0.6em;
+  }
 }
